@@ -52,3 +52,4 @@ _Prediction loss function, P20_
 Means we should predict a number that underestimates the cumulative delivery 20% of the times, and overestimates 80%
 
 _Evaluation metric_
+![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/ff85ad09117045e3abfa26375fb5ebac6880bd83/P20.png)
