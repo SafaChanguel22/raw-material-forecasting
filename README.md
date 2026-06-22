@@ -31,5 +31,5 @@ The competition was hosted on Kaggle InClass, Kaggle is the largest platform for
 ### The optimazation problem 
 Stock prediction is a key part of the constraints in the huge
 optimization problem being solved by the company
-
+![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/58b08c3794f5e94ee7e3d0c8514e9d6dcd53c080/optimization%20problem.png)
 
