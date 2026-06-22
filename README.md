@@ -15,6 +15,7 @@ Better score => More VTs defeated => higher grade.
 
 The competition was hosted on Kaggle InClass, Kaggle is the largest platform for data science competitions
 
+# The Companies
 ## Append Consilting 
 - Started as student consultancy in 2022
 - Specializing in AI, Data Science and systems development
@@ -33,3 +34,21 @@ Stock prediction is a key part of the constraints in the huge
 optimization problem being solved by the company
 ![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/58b08c3794f5e94ee7e3d0c8514e9d6dcd53c080/optimization%20problem.png)
 
+# Stock prediction 
+
+_Context_
+
+The optimizer must recommend a plan that does not use more of each material than we have available.
+
+We know what we have now, but it is uncertain what we will
+receive and when we will receive it.
+
+_Prediction goal_
+
+Make **conservative** predictions of how many **kgs of each material** that will be delivered to Azuqueca **cumulatively** by the end of each day 
+
+_Prediction loss function, P20_
+
+Means we should predict a number that underestimates the cumulative delivery 20% of the times, and overestimates 80%
+
+_Evaluation metric_
