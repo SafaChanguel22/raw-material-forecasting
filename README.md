@@ -2,19 +2,6 @@
 🏭 Time Series Forecasting of Raw Material Stock Prediction
 ![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/6b56b4a345e8309e2a1a3ca0323ff2ab9d57577c/Capture%20d%E2%80%99%C3%A9cran%202026-06-22%20151028.png)
 
-
-## Focused skills
-* Data preprocessing, manipulation and preparation
-* Exploratory data analysis
-* Feature engineering
-* Model ensemble
-* Model interpretation
-
-In this projects, by solving a prediction problem with real-world data, we competed with other Virtual Teams and our classmates to have the best score :
-Better score => More VTs defeated => higher grade.
-
-The competition was hosted on Kaggle InClass, Kaggle is the largest platform for data science competitions
-
 # The Companies
 ## Append Consilting 
 - Started as student consultancy in 2022
@@ -53,3 +40,50 @@ Means we should predict a number that underestimates the cumulative delivery 20%
 
 _Evaluation metric_
 ![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/ff85ad09117045e3abfa26375fb5ebac6880bd83/P20.png)
+
+# Data 
+
+_receivals.csv_: Primary dataset containing historical records of material receivals, with quantity, timestamp and raw material id (rm_id).
+
+_purchase_orders.csv_:  Information about ordered quantities and expected delivery dates.
+
+_materials.csv_: Data about each raw material.
+
+_transport.csv_: Transportation-related data that could affect delivery times and consistency.
+
+_prediction_mapping.csv_ & _sample_submission.csv_ : Submission files.
+
+## Important hints & Strategy
+
+These hints define the technical strategy followed throughout this project:
+
+### 1. Understand the target
+The target is **not** daily delivered quantity, but the **cumulative kg received per material (rm_id), by the end of each day**. This means the target is monotonically non-decreasing by nature.
+
+### 2. The loss function is the pinball loss
+P20 = pinball loss at quantile τ=0.2. This penalizes underestimation 4x more than overestimation, enforcing **conservative** predictions (better to predict low and be safe).
+→ **Strategy:** train models with a native quantile objective (e.g. `objective='quantile', alpha=0.2` in LightGBM, `Quantile:alpha=0.2` in CatBoost) instead of training on MSE and adjusting after the fact.
+
+### 3. Time-aware validation
+Since this is time series data, train/validation splits must respect chronology: train on the past, validate on a later period.
+→ **Strategy:** use `TimeSeriesSplit` or manual expanding/rolling windows on dates, never a random row split.
+
+### 4. Random shuffling causes information leakage
+Shuffling rows before splitting mixes future information into training
+
+### 5. Blend level estimates
+
+### 6. Cumulative predictions must not decrease
+A cumulative sum can never decrease over time.
+
+## Focused skills
+* Data preprocessing, manipulation and preparation
+* Exploratory data analysis
+* Feature engineering
+* Model ensemble
+* Model interpretation
+
+In this projects, by solving a prediction problem with real-world data, we competed with other Virtual Teams and our classmates to have the best score :
+Better score => More VTs defeated => higher grade.
+
+The competition was hosted on Kaggle InClass, Kaggle is the largest platform for data science competitions
