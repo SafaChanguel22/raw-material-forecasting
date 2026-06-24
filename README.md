@@ -69,12 +69,19 @@ Since this is time series data, train/validation splits must respect chronology:
 → **Strategy:** use `TimeSeriesSplit` or manual expanding/rolling windows on dates, never a random row split.
 
 ### 4. Random shuffling causes information leakage
-Shuffling rows before splitting mixes future information into training
+Shuffling rows before splitting mixes future information into training (via lags, rolling averages, cumulative sums).
+→ **Strategy:** always sort by date first, and double-check that no feature computed for a training row uses information from a date after the validation cutoff.
 
 ### 5. Blend level estimates
+Combine multiple simple, robust signals as features or baseline estimators:
+- last year's level at the same period (seasonality)
+- recent trend (momentum)
+- recent average (smoothing/noise reduction)
+→ **Strategy:** use these as engineered features and/or as a baseline ensemble to stabilize predictions, especially for materials with short or noisy history.
 
 ### 6. Cumulative predictions must not decrease
 A cumulative sum can never decrease over time.
+→ **Strategy:** either (a) post-process predictions with `cummax`, or (b) model non-negative daily increments and cumulate them afterward.
 
 ## Focused skills
 * Data preprocessing, manipulation and preparation
