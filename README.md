@@ -42,18 +42,17 @@ _Evaluation metric_
 ![image alt](https://github.com/SafaChanguel22/raw-material-forecasting/blob/ff85ad09117045e3abfa26375fb5ebac6880bd83/P20.png)
 
 # Data 
+_receivals.csv_: Primary dataset containing historical records of material receivals, with quantity, timestamp and raw material id (**rm_id**). It contains _122 590_ records.
 
-_receivals.csv_: Primary dataset containing historical records of material receivals, with quantity, timestamp and raw material id (rm_id).
+_purchase_orders.csv_:  Information about ordered quantities and expected delivery dates. It contains _33 171_ records.
 
-_purchase_orders.csv_:  Information about ordered quantities and expected delivery dates.
+_materials.csv_: Data about each raw material. It contains _1 217_ records.
 
-_materials.csv_: Data about each raw material.
-
-_transport.csv_: Transportation-related data that could affect delivery times and consistency.
+_transport.csv_: Transportation-related data that could affect delivery times and consistency. It contains _122 590_ records.
 
 _prediction_mapping.csv_ & _sample_submission.csv_ : Submission files.
 
-## Important hints & Strategy
+# Important hints & Strategy
 
 These hints define the technical strategy followed throughout this project:
 
